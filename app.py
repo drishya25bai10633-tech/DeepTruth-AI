@@ -112,7 +112,7 @@ st.markdown(
 st.markdown(
     """
     <div class="main-header">
-        <h1>🛡️ AURA AI · Multi-Modal Security Platform</h1>
+        <h1>🛡️ DEEPFAKE AI · Multi-Modal Security Platform</h1>
         <p>Real-time forensic verification engine for Audio, Images, Videos, Text, and SMS Messages.</p>
     </div>
     """,
