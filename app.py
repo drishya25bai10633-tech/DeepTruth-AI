@@ -140,7 +140,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-)
+
 # Header Section
 st.markdown(
     """
