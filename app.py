@@ -272,7 +272,6 @@ def predict_text(text):
       "pivotal",
       "intricate",
       "vital",
-      "It is worth noting that",
       "—",
   ]
   matches = sum(
