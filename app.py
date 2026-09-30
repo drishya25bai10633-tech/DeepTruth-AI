@@ -180,6 +180,7 @@ def predict_audio(audio_file):
 
 def predict_image(image):
   try:
+    image = image.convert("RGB")  # Prevents RGBA color channel crashes
     width, height = image.size
     aspect_ratio = round(width / height, 2)
 
