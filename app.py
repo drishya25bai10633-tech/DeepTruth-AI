@@ -17,22 +17,26 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Main Background - Soft Pastel Tint */
+    /* Main Background with subtle pastel mesh gradient */
     .stApp {
-        background-color: #f7f9fc !important;
-        color: #1a1d20 !important;
-        font-family: 'Inter', -apple-system, sans-serif !important;
+        background-color: #f4f6fb !important;
+        background-image: 
+            radial-gradient(at 10% 10%, rgba(224, 231, 255, 0.6) 0px, transparent 50%),
+            radial-gradient(at 90% 90%, rgba(238, 242, 255, 0.8) 0px, transparent 50%),
+            radial-gradient(at 50% 50%, rgba(245, 243, 255, 0.5) 0px, transparent 50%) !important;
+        color: #0f172a !important;
+        font-family: 'Inter', sans-serif !important;
     }
     
-    /* Header Container - Light Pastel Lavender Card */
+    /* Header Card */
     .main-header {
         text-align: center;
         padding: 24px;
-        background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+        background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
         border: 1px solid #c7d2fe;
         border-radius: 16px;
         margin-bottom: 25px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
     }
     
     .main-header h1 {
@@ -41,28 +45,29 @@ st.markdown(
         font-size: 2.2rem;
         margin-bottom: 6px;
     }
-    
+
     .main-header p {
         color: #4338ca !important;
         font-weight: 500;
-        font-size: 1.05rem;
     }
 
-    /* Primary Pastel Action Buttons */
-    .stButton>button {
-        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
-        color: #ffffff !important;
-        font-weight: 600 !important;
+    /* FIX FOR BLACK BOXES: Forces light theme on text areas, inputs, and file uploaders */
+    textarea, input, [data-baseweb="base-input"], [data-baseweb="textarea"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
         border-radius: 10px !important;
-        border: none !important;
-        padding: 10px 20px !important;
-        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25) !important;
-        transition: all 0.2s ease-in-out !important;
     }
 
-    .stButton>button:hover {
-        transform: translateY(-1px) !important;
-        box-shadow: 0 6px 14px rgba(99, 102, 241, 0.35) !important;
+    /* Fix File Uploader background & text */
+    [data-testid="stFileUploader"], section[data-testid="stFileUploaderDropzone"] {
+        background-color: #ffffff !important;
+        border: 2px dashed #a5b4fc !important;
+        border-radius: 12px !important;
+        color: #0f172a !important;
+    }
+
+    [data-testid="stFileUploaderDropzone"] * {
+        color: #334155 !important;
     }
 
     /* Tab Headers */
@@ -76,7 +81,6 @@ st.markdown(
         border-radius: 10px 10px 0 0 !important;
         color: #475569 !important;
         font-weight: 600 !important;
-        padding: 10px 16px !important;
     }
 
     .stTabs [aria-selected="true"] {
@@ -85,30 +89,22 @@ st.markdown(
         border-color: #c7d2fe !important;
     }
 
-    /* Cards and Input Containers */
-    div[data-testid="stForm"], .stTextArea, .stFileUploader {
-        background-color: #ffffff !important;
-        border-radius: 12px !important;
-        border: 1px solid #e2e8f0 !important;
-        padding: 10px !important;
+    /* Action Buttons */
+    .stButton>button {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        border-radius: 10px !important;
+        border: none !important;
+        padding: 10px 22px !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
     }
 
-    /* Force readable dark text on inputs and labels */
-    label, p, span, div {
-        color: #1e293b !important;
+    /* Readable labels and titles */
+    label, p, span, h1, h2, h3, h4 {
+        color: #0f172a !important;
     }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Header Section
-st.markdown(
-    """
-    <div class="main-header">
-        <h1>🛡️ DEEPFAKE AI · Multi-Modal Security Platform</h1>
-        <p>Real-time forensic verification engine for Audio, Images, Videos, Text, and SMS Messages.</p>
-    </div>
     """,
     unsafe_allow_html=True,
 )
