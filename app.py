@@ -108,7 +108,16 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
+# Header Section
+st.markdown(
+    """
+    <div class="main-header">
+        <h1>🛡️ AURA AI · Multi-Modal Security Platform</h1>
+        <p>Real-time forensic verification engine for Audio, Images, Videos, Text, and SMS Messages.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 # =========================================================
 # 2. DETECTION BACKEND LOGIC
