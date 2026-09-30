@@ -106,7 +106,7 @@ st.markdown(
 st.markdown(
     """
     <div class="main-header">
-        <h1>🛡️ AURA AI · Multi-Modal Security Platform</h1>
+        <h1>🛡️ DEEPFAKE AI · Multi-Modal Security Platform</h1>
         <p>Real-time forensic verification engine for Audio, Images, Videos, Text, and SMS Messages.</p>
     </div>
     """,
@@ -295,7 +295,7 @@ def predict_sms(sms_text):
 # =========================================================
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "🎙️ AI Detection - Audio",
-    "🖼️ AI Dtetction - Image",
+    "🖼️ AI Detection - Image",
     "🎥 AI Detection - Video",
     "📝 AI Detection - Text",
     "💬 AI Detection - SMS & Scam",
