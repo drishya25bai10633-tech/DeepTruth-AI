@@ -3,4 +3,4 @@ opencv-python-headless
 librosa
 numpy
 pillow
-torch
+
