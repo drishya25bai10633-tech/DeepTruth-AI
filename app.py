@@ -9,7 +9,7 @@ import streamlit as st
 # 1. PAGE CONFIG & LIGHT PASTEL THEME STYLING
 # =========================================================
 st.set_page_config(
-    page_title="AURA AI - Media & Threat Verification",
+    page_title="DEEPFAKE AI - Media & Threat Verification",
     page_icon="🛡️",
     layout="wide",
 )
@@ -294,11 +294,11 @@ def predict_sms(sms_text):
 # 3. STREAMLIT UI TABS LAYOUT
 # =========================================================
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "🎙️ Audio Deepfake",
-    "🖼️ Image Authenticity",
-    "🎥 Video Deepfake",
-    "📝 AI Text Detector",
-    "💬 SMS & Scam",
+    "🎙️ AI Detection - Audio",
+    "🖼️ AI Dtetction - Image",
+    "🎥 AI Detection - Video",
+    "📝 AI Detection - Text",
+    "💬 AI Detection - SMS & Scam",
 ])
 
 # --- TAB 1: AUDIO ---
