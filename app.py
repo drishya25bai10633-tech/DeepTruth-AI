@@ -272,6 +272,7 @@ def predict_text(text):
       "pivotal",
       "intricate",
       "vital",
+      "—",
   ]
   matches = sum(
       1 for word in words if word.lower().strip(".,!?") in ai_keywords
