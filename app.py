@@ -17,96 +17,129 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Main Background with subtle pastel mesh gradient */
-    .stApp {
-        background-color: #f4f6fb !important;
-        background-image: 
-            radial-gradient(at 10% 10%, rgba(224, 231, 255, 0.6) 0px, transparent 50%),
-            radial-gradient(at 90% 90%, rgba(238, 242, 255, 0.8) 0px, transparent 50%),
-            radial-gradient(at 50% 50%, rgba(245, 243, 255, 0.5) 0px, transparent 50%) !important;
-        color: #0f172a !important;
-        font-family: 'Inter', sans-serif !important;
+    /* 1. FORCE DREAMY PASTEL GRADIENT ACROSS ALL STREAMLIT LAYERS */
+    html, body, .stApp, [data-testid="stAppViewContainer"], .main, header, [data-testid="stHeader"] {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%) !important;
+        background-attachment: fixed !important;
+    }
+
+    /* Whimsical Pastel Glow Mesh Background overlay */
+    [data-testid="stAppViewContainer"]::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: 
+            radial-gradient(circle at 15% 20%, rgba(216, 180, 254, 0.45) 0%, transparent 45%),
+            radial-gradient(circle at 85% 25%, rgba(165, 243, 252, 0.45) 0%, transparent 45%),
+            radial-gradient(circle at 50% 75%, rgba(254, 205, 211, 0.40) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(221, 214, 254, 0.35) 0%, transparent 40%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Bring app content above background graphics */
+    .block-container {
+        position: relative;
+        z-index: 1;
+        padding-top: 2rem !important;
     }
     
-    /* Header Card */
+    /* 2. WHIMSICAL GLASSMORPHISM HEADER */
     .main-header {
         text-align: center;
-        padding: 24px;
-        background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
-        border: 1px solid #c7d2fe;
-        border-radius: 16px;
+        padding: 28px 20px;
+        background: rgba(255, 255, 255, 0.65) !important;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border-radius: 20px !important;
         margin-bottom: 25px;
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.08);
+        box-shadow: 0 10px 30px rgba(165, 180, 252, 0.2) !important;
     }
     
     .main-header h1 {
-        color: #1e1b4b !important;
-        font-weight: 800;
-        font-size: 2.2rem;
-        margin-bottom: 6px;
+        background: linear-gradient(90deg, #4f46e5, #7c3aed, #db2777) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        font-weight: 800 !important;
+        font-size: 2.3rem !important;
+        margin-bottom: 8px !important;
     }
 
     .main-header p {
-        color: #4338ca !important;
-        font-weight: 500;
+        color: #475569 !important;
+        font-weight: 500 !important;
+        font-size: 1.05rem !important;
     }
 
-    /* FIX FOR BLACK BOXES: Forces light theme on text areas, inputs, and file uploaders */
+    /* 3. FIX TEXTBOXES & DROPZONES (LIGHT PASTEL CARDS) */
     textarea, input, [data-baseweb="base-input"], [data-baseweb="textarea"] {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border-radius: 10px !important;
+        border-radius: 12px !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
     }
 
-    /* Fix File Uploader background & text */
     [data-testid="stFileUploader"], section[data-testid="stFileUploaderDropzone"] {
-        background-color: #ffffff !important;
-        border: 2px dashed #a5b4fc !important;
-        border-radius: 12px !important;
-        color: #0f172a !important;
+        background: rgba(255, 255, 255, 0.75) !important;
+        border: 2px dashed #c084fc !important;
+        border-radius: 16px !important;
+        backdrop-filter: blur(8px);
     }
 
     [data-testid="stFileUploaderDropzone"] * {
         color: #334155 !important;
     }
 
-    /* Tab Headers */
+    /* 4. PASTEL TABS */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
+        gap: 10px;
+        background: transparent !important;
     }
 
     .stTabs [data-baseweb="tab"] {
-        background-color: #ffffff !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 10px 10px 0 0 !important;
+        background-color: rgba(255, 255, 255, 0.6) !important;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border-radius: 12px 12px 0 0 !important;
         color: #475569 !important;
         font-weight: 600 !important;
+        padding: 10px 18px !important;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #e0e7ff !important;
-        color: #3730a3 !important;
-        border-color: #c7d2fe !important;
+        background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%) !important;
+        color: #5b21b6 !important;
+        border-color: #c084fc !important;
+        box-shadow: 0 -4px 12px rgba(192, 132, 252, 0.15) !important;
     }
 
-    /* Action Buttons */
+    /* 5. VIBRANT GRADIENT BUTTONS */
     .stButton>button {
-        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+        background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%) !important;
         color: #ffffff !important;
-        font-weight: 600 !important;
-        border-radius: 10px !important;
+        font-weight: 700 !important;
+        border-radius: 12px !important;
         border: none !important;
-        padding: 10px 22px !important;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+        padding: 12px 24px !important;
+        box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4) !important;
+        transition: all 0.2s ease-in-out !important;
     }
 
-    /* Readable labels and titles */
+    .stButton>button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(192, 132, 252, 0.5) !important;
+    }
+
+    /* General Typography Fixes */
     label, p, span, h1, h2, h3, h4 {
-        color: #0f172a !important;
+        color: #1e293b !important;
     }
     </style>
     """,
     unsafe_allow_html=True,
+)
 )
 # Header Section
 st.markdown(
